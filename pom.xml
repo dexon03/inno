@@ -65,6 +65,14 @@
             <version>2.8.5</version>
         </dependency>
 
+        <!-- Аудит змін: зберігає знімки записів і дифи між ними.
+             Версія 7.11.10 найсвіжіша; у лекції була 7.8.0, зібрана ще під Spring Boot 3. -->
+        <dependency>
+            <groupId>org.javers</groupId>
+            <artifactId>javers-spring-boot-starter-mongo</artifactId>
+            <version>7.11.10</version>
+        </dependency>
+
         <!-- Перевірка запитів анотаціями: без цього jakarta.validation лежить на класпасі
              як набір анотацій, але ніхто їх не виконує. -->
         <dependency>

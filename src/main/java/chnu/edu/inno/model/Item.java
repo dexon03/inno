@@ -3,6 +3,7 @@ package chnu.edu.inno.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -13,13 +14,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * <p>Назовні не віддається: для цього є {@code ItemResponse}. Такий поділ дозволяє міняти
  * сховище, не змінюючи контракт API.
+ *
+ * <p>Успадковує {@link AuditMetadata}, тож разом із записом зберігається, хто і коли змінив
+ * його востаннє. Повна історія змін живе окремо, в сховищі Javers.
  */
 @Document(collection = "items")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item extends AuditMetadata {
 
     @Id
     private String id;
